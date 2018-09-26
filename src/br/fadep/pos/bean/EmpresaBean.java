@@ -30,7 +30,8 @@ public class EmpresaBean extends AbstractBeanImpl<Empresa> implements EmpresaBea
 //		if(!query.getResultList().isEmpty()){
 //			return null;
 //		}
-		return (Empresa) query.getResultList().get(0);
+		
+		return (Empresa) query.getSingleResult();
 	}
 
 }

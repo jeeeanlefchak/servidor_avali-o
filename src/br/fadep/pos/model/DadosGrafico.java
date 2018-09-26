@@ -12,7 +12,8 @@ public class DadosGrafico {
 	public Double nota3;
 	public Double nota4;
 	public Long idEmpresa;
-		
+	public String numeroNota;
+	
 	public DadosGrafico(Date dataInicio, Date dataFinal, Long idVendedor, Double nota1, Double nota2,Double nota3,Double nota4) {
 		this.dataInicio = dataInicio;
 		this.dataFinal = dataFinal;
@@ -28,6 +29,13 @@ public class DadosGrafico {
 	
 	
 	
+	
+	public String getNumeroNota() {
+		return numeroNota;
+	}
+	public void setNumeroNota(String numeroNota) {
+		this.numeroNota = numeroNota;
+	}
 	public Long getIdEmpresa() {
 		return idEmpresa;
 	}

@@ -11,14 +11,25 @@ import java.util.Date;
 import javax.persistence.*;
 import br.fadep.pos.model.generic.AbstractEntityImpl;
 
-@SqlResultSetMapping(name="funcionario",
-classes={@ConstructorResult(targetClass=Funcionario.class, columns={
-		@ColumnResult(name="id",type=Long.class),
-		@ColumnResult(name="nome",type=String.class),
-		@ColumnResult(name="codigo",type=String.class),
-		@ColumnResult(name="idempresa",type=Long.class),
-		@ColumnResult(name="dataCadastro",type=Date.class),
-})})
+@SqlResultSetMappings({
+	@SqlResultSetMapping(name="funcionario",
+	classes={@ConstructorResult(targetClass=Funcionario.class, columns={
+			@ColumnResult(name="id",type=Long.class),
+			@ColumnResult(name="nome",type=String.class),
+			@ColumnResult(name="codigo",type=String.class),
+			@ColumnResult(name="idempresa",type=Long.class),
+			@ColumnResult(name="dataCadastro",type=Date.class),
+			@ColumnResult(name="versao", type=Long.class)
+	})}),
+	@SqlResultSetMapping(name="HistoricoAvaliacao",
+	classes={@ConstructorResult(targetClass=HistoricoAvaliacao.class, columns={
+			@ColumnResult(name="funcionario",type=String.class),
+			@ColumnResult(name="avaliacao",type=String.class),
+			@ColumnResult(name="numeronota",type=String.class),
+			@ColumnResult(name="dataCadastro",type=Date.class)
+	})})
+
+})
 
 @Entity
 public class Funcionario extends AbstractEntityImpl {
@@ -33,12 +44,14 @@ public class Funcionario extends AbstractEntityImpl {
 	@JoinColumn(name="idEmpresa", referencedColumnName="id",insertable=false, updatable=false)
 	private Empresa empresa;
 	
-	public Funcionario(Long id, String nome, String codigo, Long idEmpresa, Date dataCadastro) {
+	
+	public Funcionario(Long id, String nome, String codigo, Long idEmpresa, Date dataCadastro, Long versao) {
 		this.id = id;
 		this.nome = nome;
 		this.codigo = codigo;
 		this.idEmpresa = idEmpresa;
 		this.dataCadastro = dataCadastro;
+		this.versao = versao;
 	}
 	Funcionario(){
 		
