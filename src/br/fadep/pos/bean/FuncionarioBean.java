@@ -40,7 +40,7 @@ public class FuncionarioBean extends AbstractBeanImpl<Funcionario> implements Fu
 			if(dados.getIdVendedor() != null){
 				sql += "and n1.idFuncionario = :idFuncionario ";
 			}
-			if(dados.getNumeroNota().length() > 0) {
+			if(dados.getNumeroNota().length() > 1) {
 				sql += " and n1.numeronota ilike :numeronota ";
 			}
 			sql += ") as  nota1,";
@@ -52,7 +52,7 @@ public class FuncionarioBean extends AbstractBeanImpl<Funcionario> implements Fu
 			if(dados.getIdVendedor() != null){
 				sql += "and n2.idFuncionario = :idFuncionario ";
 			}
-			if(dados.getNumeroNota().length() > 0) {
+			if(dados.getNumeroNota().length() > 1) {
 				sql += " and n2.numeronota ilike :numeronota ";
 			}
 			sql += ") as  nota2,";
@@ -64,7 +64,7 @@ public class FuncionarioBean extends AbstractBeanImpl<Funcionario> implements Fu
 			if(dados.getIdVendedor() != null){
 				sql += "and n3.idFuncionario = :idFuncionario ";
 			}
-			if(dados.getNumeroNota().length() > 0) {
+			if(dados.getNumeroNota().length() > 1) {
 				sql += " and n3.numeronota = :numeronota ";
 			}
 			sql += ") as  nota3, ";
@@ -76,7 +76,7 @@ public class FuncionarioBean extends AbstractBeanImpl<Funcionario> implements Fu
 			if(dados.getIdVendedor() != null){
 				sql += "and n4.idFuncionario = :idFuncionario ";
 			}
-			if(dados.getNumeroNota().length() > 0) {
+			if(dados.getNumeroNota().length() > 1) {
 				sql += " and n4.numeronota ilike :numeronota ";
 			}
 			sql += ") as  nota4, null as datainicio, null as dataFinal, null as idVendedor ";
@@ -87,7 +87,7 @@ public class FuncionarioBean extends AbstractBeanImpl<Funcionario> implements Fu
 		if(dados.getIdEmpresa() != null){
 			query.setParameter("idEmpresa", dados.getIdEmpresa());
 		}
-		if(dados.getNumeroNota().length() > 0) {
+		if(dados.getNumeroNota().length() > 1) {
 			query.setParameter("numeronota","%" + dados.getNumeroNota().toString().trim() +"%");
 		}
 		query.setParameter("dataInicio", dados.getDataInicio());
