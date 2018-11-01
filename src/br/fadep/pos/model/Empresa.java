@@ -27,7 +27,18 @@ public class Empresa extends AbstractEntityImpl{
 	private String login;
 	@Column(length = 200)
 	private String senha;
+	@Column(columnDefinition="boolean default false")
+	private Boolean permiteCadastrarNovas;
 	
+	
+	public Boolean getPermiteCadastrarNovas() {
+		return permiteCadastrarNovas;
+	}
+
+	public void setPermiteCadastrarNovas(Boolean permiteCadastrarNovas) {
+		this.permiteCadastrarNovas = permiteCadastrarNovas;
+	}
+
 	public String getLogo() {
 		return logo;
 	}
